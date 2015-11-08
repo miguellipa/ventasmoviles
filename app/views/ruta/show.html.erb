@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @rutum.fecha %>
+</p>
+<p>
+  <strong>Cliente:</strong>
+  <%= @rutum.cliente_nombre %>
+</p>  
+<p>
+  <strong>Usuario:</strong>
+  <%= @rutum.usuario_nombre %>
+</p>
+
+<%= link_to 'Edit', edit_rutum_path(@rutum) %> |
+<%= link_to 'Back', ruta_path %>

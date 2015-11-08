@@ -1,0 +1,16 @@
+<%= simple_form_for(@rutum) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :fecha %>
+  </div>
+  <div class="form-actions">
+   <%= f.association :cliente , label_method: "#{:nombre}" %>
+  </div>
+  <div class="form-actions">
+   <%= f.association :usuario , label_method: "#{:nombre}" %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

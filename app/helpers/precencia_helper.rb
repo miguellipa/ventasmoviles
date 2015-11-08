@@ -1,0 +1,2 @@
+module PrecenciaHelper
+end
