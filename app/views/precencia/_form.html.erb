@@ -1,12 +1,10 @@
-<%= simple_form_for(@precencium) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @precencium, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :hora %>
+  <%= error_span(@precencium[:hora]) %>
+  <%= f.input :observacion %>
+  <%= error_span(@precencium[:observacion]) %>
 
-  <div class="form-inputs">
-    <%= f.input :hora %>
-    <%= f.input :observacion %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                precencia_path, :class => 'btn btn-default' %>
 <% end %>

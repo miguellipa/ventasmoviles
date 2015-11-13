@@ -1,14 +1,14 @@
-<%= simple_form_for(@usuario) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @usuario, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :nombre %>
+  <%= error_span(@usuario[:nombre]) %>
+  <%= f.input :usuario %>
+  <%= error_span(@usuario[:usuario]) %>
+  <%= f.input :password %>
+  <%= error_span(@usuario[:password]) %>
+  <%= f.input :tipo_id %>
+  <%= error_span(@usuario[:tipo_id]) %>
 
-  <div class="form-inputs">
-    <%= f.input :nombre %>
-    <%= f.input :usuario %>
-    <%= f.input :password %>
-    <%= f.association :tipo , label_method: "#{:tipo}" %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                usuarios_path, :class => 'btn btn-default' %>
 <% end %>

@@ -1,16 +1,12 @@
-<%= simple_form_for(@rutum) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @rutum, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :fecha %>
+  <%= error_span(@rutum[:fecha]) %>
+  <%= f.input :cliente_id %>
+  <%= error_span(@rutum[:cliente_id]) %>
+  <%= f.input :usuario_id %>
+  <%= error_span(@rutum[:usuario_id]) %>
 
-  <div class="form-inputs">
-    <%= f.input :fecha %>
-  </div>
-  <div class="form-actions">
-   <%= f.association :cliente , label_method: "#{:nombre}" %>
-  </div>
-  <div class="form-actions">
-   <%= f.association :usuario , label_method: "#{:nombre}" %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                ruta_path, :class => 'btn btn-default' %>
 <% end %>
