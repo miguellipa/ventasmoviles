@@ -5,7 +5,7 @@
   <%= error_span(@usuario[:usuario]) %>
   <%= f.input :password %>
   <%= error_span(@usuario[:password]) %>
-  <%= f.input :tipo_id %>
+  <%= f.association :tipo, :label_method => lambda { |tipo| "#{tipo.tipo}" }  %>
   <%= error_span(@usuario[:tipo_id]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

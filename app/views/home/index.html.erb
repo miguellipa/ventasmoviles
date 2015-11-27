@@ -1,2 +1,10 @@
-<h1>Ventas Moviles</h1>
-<p> </p>
+<% if ! current_user 
+    authorize 
+    end 
+%>
+
+<p><%= image_tag("comercial.JPG", width: '700', height: '100', alt: 'Site Logo', class: "logo") %></p>
+
+<h1><center>Sistema Ventas Moviles</center></h1>
+
+
