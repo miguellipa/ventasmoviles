@@ -50,3 +50,7 @@ gem 'simple_form'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+gem 'rails_bootstrap_navbar'
+
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'

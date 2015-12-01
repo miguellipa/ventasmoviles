@@ -4,5 +4,5 @@ class Usuario < ActiveRecord::Base
     def tipo_usuario
       self.tipo.tipo
     end
-    
+
 end
