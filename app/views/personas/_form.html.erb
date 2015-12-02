@@ -1,0 +1,13 @@
+<%= simple_form_for @persona, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :nombres %>
+  <%= error_span(@persona[:nombres]) %>
+  <%= f.input :cargo %>
+  <%= error_span(@persona[:cargo]) %>
+  
+  <%= f.association :cliente ,:label_method => lambda { |cliente| "#{cliente.nombre}" } %>
+  <%= error_span(@persona[:cliente_id]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                personas_path, :class => 'btn btn-default' %>
+<% end %>

@@ -1,6 +1,23 @@
 <%= simple_form_for @precencium, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.association :cliente ,:label_method => lambda { |cliente| "#{cliente.nombre}" } %>
+  <%= error_span(@precencium[:cliente_id]) %>
+  
+  <%= f.association :persona ,:label_method => lambda { |persona| "#{persona.nombres}"} %>
+  <%= error_span(@precencium[:persona_id]) %>  
+  
   <%= f.input :hora %>
   <%= error_span(@precencium[:hora]) %>
+
+
+
+  <%= f.association :producto ,:label_method => lambda { |producto| "#{producto.producto}"} %>
+  <%= error_span(@precencium[:producto_id]) %>
+
+  <%= f.input :cantidad %>
+  <%= error_span(@precencium[:cantidad]) %>
+
+
   <%= f.input :observacion %>
   <%= error_span(@precencium[:observacion]) %>
 

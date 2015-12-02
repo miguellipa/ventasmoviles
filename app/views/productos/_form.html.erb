@@ -6,6 +6,11 @@
   <%= f.input :precio %>
   <%= error_span(@producto[:precio]) %>
 
+  <%= f.association :category ,:label_method => lambda { |category| "#{category.nombre}"} %>
+  <%= error_span(@producto[:categories_id]) %>
+
+
+
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 productos_path, :class => 'btn btn-default' %>
