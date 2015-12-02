@@ -54,13 +54,11 @@
   display: block;
 }
 #cssmenu > ul li.has-sub > a {
-  background-image: url('images/caret.png');
   background-repeat: no-repeat;
   background-position: 90% -95%;
 }
 #cssmenu > ul li.has-sub > a.active,
 #cssmenu > ul li.has-sub > a:hover {
-  background: #d80041 url('images/caret.png') no-repeat;
   background-position: 90% 195%;
 }
 #cssmenu > ul li a {
@@ -72,7 +70,7 @@
 }
 #cssmenu > ul li a.active,
 #cssmenu > ul li a:hover {
-  background: #d80041;
+  background: #66ABDF;
   color: #fff;
   text-shadow: 0px 1px 0px #000;
 }
@@ -84,11 +82,11 @@
     display: block;
   }
   #cssmenu > ul li#responsive-tab a {
-    background: url('images/menu.png') no-repeat;
+    background: url('/assets/menu.png') no-repeat;
     background-position: 95% -35%;
   }
   #cssmenu > ul li#responsive-tab a:hover {
-    background-color: #d80041;
+    background-color: #66ABDF;
     background-position: 95% 135%;
   }
   #cssmenu > ul li {

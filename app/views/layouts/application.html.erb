@@ -72,6 +72,7 @@
 
 <div id='cssmenu'>
 <ul>
+   <li><%= image_tag("logo_trome.png", width: '80', height: '50', alt: 'Site Logo', class: "logo") %></li>
    <li class='active'><%= link_to "Inicio", root_path  %></li>
    <% if current_user.tipo_usuario == "Administrador" %>
    <li class='has-sub'><a href='#'><span>Accesos</span></a>
@@ -89,21 +90,26 @@
          <li><%= link_to "Precencia", precencia_path  %></li>
           <li><%= link_to "Pedidos", "#"  %></li>
           <li><%= link_to "Tipo de Pago Cliente", "#"  %></li>
-          <li><%= link_to "Descuentos Por Cliente", "#"  %></li>
           <li><%= link_to "Estadisticas", "#"  %></li>
           <li class='last'><%= link_to "Resumen", "#"  %></li> 
          
       </ul>
    </li>
+   
+   <% if current_user.tipo_usuario == "Administrador" %>
    <li class='has-sub'><a href='#'><span>Configuracion</span></a>
       <ul>
         <li><%= link_to "Producto", productos_path  %></li>
          <li><%= link_to "Ruta", ruta_path  %></li>
          <li><%= link_to "Categorias", categories_path  %></li>
+         <li><%= link_to "Descuentos Por Cliente", "#"  %></li>
       </ul>
    </li>   
+   <% end %>
+   
    <li class='has-sub'><a  href="#"><%= current_user.usuario %><%= image_tag("user.png", alt: 'Site Logo', class: "logo") %></a>
       <ul>
+        <li><%= link_to "Actualizar Informacion", edit_usuario_path(current_user.id)  %></li>
         <li><a href=<%= logout_path %>>Salir</a></li>
       </ul>
    </li>   
@@ -139,7 +145,7 @@
   <div class="copyrights">
     <div class="container">
       <div class="row">
-        <p>© Copyright 2014 by Comercial Alimenticia SAC -  Todos los derechos Reservados</p>
+        <center><p>© Copyright 2014 by Comercial Alimenticia SAC -  Todos los derechos Reservados</p></center>
       </div>
     </div>
   </div>  
