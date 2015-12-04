@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'resumen/index'
+
+  resources :pedidos
+  resources :descuento_clientes
   resources :categories
   resources :personas  
   #get 'login/index'
@@ -11,12 +15,11 @@ Rails.application.routes.draw do
   resources :tipos
   root 'home#index'
 
-
   # these routes are for showing users a login form, logging them in, and logging them out.
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-
+  get    '/resumen'   => 'resumen#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

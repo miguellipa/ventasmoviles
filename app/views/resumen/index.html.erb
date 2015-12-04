@@ -1,0 +1,57 @@
+<h1>Resumen </h1>
+
+<p id='resumen'>
+  <p>Ejecutivo de venta :  <%= current_user.usuario %> </p>
+  <p>Tipo Usuario : <%= current_user.tipo_usuario %> </p>
+  
+  <table class="table table-striped">
+    
+  <thead>
+    <tr>
+      <th>N°</th>
+      <th>Cliente</th>
+      <th>Producto</th>
+      <th>Categoria</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Total</th>
+      <th>Persona Contacto de Empresa</th>
+      <th>Observacion Precencia</th>
+      <th>Pedido Generado</th>
+    </tr>
+  </thead>    
+    
+    <tbody>
+    <% i = 1 %>  
+   <% @resumen_usuario.total_precencia_usuario(current_user).each do |precencia| %>
+      <tr>
+        <td><%= i  %></td>
+        <% @resumen_usuario.obtener_precencia_cliente(precencia.cliente_id).each do |cli| %>
+        <td><%= cli.nombre %></td>
+        <% end %>
+        
+        <% @resumen_usuario.obtener_precencia_producto(precencia.producto_id).each do |pro| %>
+        <td><%= pro.producto %></td>
+        
+               <% @resumen_usuario.obtener_producto_categoria(pro.category_id).each do |cat| %>
+                <td><%= cat.nombre %></td>
+                <% end %>
+        
+                <td><%= number_to_currency pro.precio , unit: "S/.", seperator: ",", delimiter: ""  %></td>
+                <td><%= precencia.cantidad %></td>
+                <td><%= number_to_currency (pro.precio * precencia.cantidad)   , unit: "S/."  %></td>        
+        <% end %>
+        
+        <% @resumen_usuario.obtener_precencia_persona(precencia.persona_id).each do |per| %>
+        <td><%= per.nombres %></td>
+        <% end %>
+        <td><%= precencia.observacion %></td>
+        <td><%= @resumen_usuario.obtener_precencia_pedido(precencia.id) %></td>
+      </tr>
+    <% i = i + 1 %>  
+    <% end %>
+    </tbody>
+</table>    
+  <p>Total de Precencias realizadas : <%= @resumen_usuario.total_precencia_usuario(current_user) %> </p>
+</p>
+

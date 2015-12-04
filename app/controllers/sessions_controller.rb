@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       session[:usuario_id] = user.id
       redirect_to '/'
     else
-      flash.now[:danger] = 'Usuario/Password Invalido'
+      flash.now[:danger] = 'Usuario/Contraseña Invalido'
        render 'new'
     end
   end

@@ -5,4 +5,6 @@ class Usuario < ActiveRecord::Base
       self.tipo.tipo
     end
 
+
+
 end

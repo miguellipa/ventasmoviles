@@ -1,0 +1,18 @@
+<%= simple_form_for @pedido, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.association :precencium ,collection: Precencium.where(usuario: current_user.id),:label_method => lambda { |precencium| "#{precencium.nombre}"} %>
+  <%= error_span(@pedido[:precencia_id]) %>
+  
+  <%= f.input :fecha %>
+  <%= error_span(@pedido[:fecha]) %>
+ 
+ 
+  <!--<%= f.input :total %>
+  <%= error_span(@pedido[:total]) %>  -->
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                pedidos_path, :class => 'btn btn-default' %>
+                
+          
+<% end %>

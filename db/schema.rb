@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202035606) do
+ActiveRecord::Schema.define(version: 20151203045233) do
 
   create_table "categories", force: :cascade do |t|
     t.text     "nombre",      limit: 65535
@@ -31,6 +31,26 @@ ActiveRecord::Schema.define(version: 20151202035606) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "descuento_clientes", force: :cascade do |t|
+    t.decimal  "descuento",               precision: 10
+    t.string   "descripcion", limit: 255
+    t.integer  "cliente_id",  limit: 4
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "descuento_clientes", ["cliente_id"], name: "index_descuento_clientes_on_cliente_id", using: :btree
+
+  create_table "pedidos", force: :cascade do |t|
+    t.integer  "precencia_id", limit: 4
+    t.date     "fecha"
+    t.decimal  "total",                  precision: 10
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "pedidos", ["precencia_id"], name: "index_pedidos_on_precencia_id", using: :btree
+
   create_table "personas", force: :cascade do |t|
     t.text     "nombres",    limit: 65535
     t.text     "cargo",      limit: 65535
@@ -42,11 +62,13 @@ ActiveRecord::Schema.define(version: 20151202035606) do
   add_index "personas", ["cliente_id"], name: "index_personas_on_cliente_id", using: :btree
 
   create_table "precencia", force: :cascade do |t|
+    t.text     "nombre",           limit: 65535
     t.time     "hora"
     t.text     "observacion",      limit: 65535
     t.integer  "cliente_id",       limit: 4
     t.integer  "persona_id",       limit: 4
     t.text     "nombre_precencia", limit: 65535
+    t.integer  "usuario_id",       limit: 4
     t.integer  "producto_id",      limit: 4
     t.integer  "cantidad",         limit: 4
     t.datetime "created_at",                     null: false
@@ -56,6 +78,7 @@ ActiveRecord::Schema.define(version: 20151202035606) do
   add_index "precencia", ["cliente_id"], name: "index_precencia_on_cliente_id", using: :btree
   add_index "precencia", ["persona_id"], name: "index_precencia_on_persona_id", using: :btree
   add_index "precencia", ["producto_id"], name: "index_precencia_on_producto_id", using: :btree
+  add_index "precencia", ["usuario_id"], name: "index_precencia_on_usuario_id", using: :btree
 
   create_table "productos", force: :cascade do |t|
     t.string   "producto",    limit: 255

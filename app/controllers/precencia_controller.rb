@@ -62,8 +62,6 @@ class PrecenciaController < ApplicationController
   end
 
 
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_precencium
@@ -72,6 +70,6 @@ class PrecenciaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def precencium_params
-      params.require(:precencium).permit(:hora, :observacion)
+      params.require(:precencium).permit(:hora, :observacion,:persona_id, :producto_id, :cantidad, :cliente_id, :usuario_id,:nombre)
     end
 end

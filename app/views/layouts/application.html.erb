@@ -64,10 +64,6 @@
 <% if current_user 
 
 %> 
-
-
-
-
 <header>
 
 <div id='cssmenu'>
@@ -88,10 +84,9 @@
          <li><%= link_to "Cliente", clientes_path  %></li>
          <li><%= link_to "Personas", personas_path  %></li>
          <li><%= link_to "Precencia", precencia_path  %></li>
-          <li><%= link_to "Pedidos", "#"  %></li>
-          <li><%= link_to "Tipo de Pago Cliente", "#"  %></li>
+          <li><%= link_to "Pedidos", pedidos_path  %></li>
           <li><%= link_to "Estadisticas", "#"  %></li>
-          <li class='last'><%= link_to "Resumen", "#"  %></li> 
+          <li class='last'><%= link_to "Resumen", resumen_index_path  %></li> 
          
       </ul>
    </li>
@@ -102,7 +97,7 @@
         <li><%= link_to "Producto", productos_path  %></li>
          <li><%= link_to "Ruta", ruta_path  %></li>
          <li><%= link_to "Categorias", categories_path  %></li>
-         <li><%= link_to "Descuentos Por Cliente", "#"  %></li>
+         <li><%= link_to "Descuentos Por Cliente", descuento_clientes_path  %></li>
       </ul>
    </li>   
    <% end %>
@@ -145,7 +140,7 @@
   <div class="copyrights">
     <div class="container">
       <div class="row">
-        <center><p>© Copyright 2014 by Comercial Alimenticia SAC -  Todos los derechos Reservados</p></center>
+        <center><p class="text-muted credit">© Copyright 2014 by Comercial Alimenticia SAC -  Todos los derechos Reservados</p></center>
       </div>
     </div>
   </div>  

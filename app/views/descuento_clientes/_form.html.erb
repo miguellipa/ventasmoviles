@@ -1,0 +1,15 @@
+<%= simple_form_for @descuento_cliente, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :descuento %>
+  <%= error_span(@descuento_cliente[:descuento]) %>
+  <%= f.input :descripcion %>
+  <%= error_span(@descuento_cliente[:descripcion]) %>
+  
+  
+  <%= f.association :cliente ,:label_method => lambda { |cliente| "#{cliente.nombre}" } %>
+  <%= error_span(@descuento_cliente[:cliente_id]) %>
+  
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                descuento_clientes_path, :class => 'btn btn-default' %>
+<% end %>

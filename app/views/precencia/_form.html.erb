@@ -1,9 +1,12 @@
 <%= simple_form_for @precencium, :html => { :class => 'form-horizontal' } do |f| %>
 
+  <%= f.association :usuario ,:label_method => lambda { |usuario| "#{usuario.nombre}" } ,collection: Usuario.where(id: current_user.id),:selected => current_user.id, :include_hidden => false,:label => "Ejecutivo de Venta" %>
+  <%= error_span(@precencium[:usuario_id]) %>
+
   <%= f.association :cliente ,:label_method => lambda { |cliente| "#{cliente.nombre}" } %>
   <%= error_span(@precencium[:cliente_id]) %>
   
-  <%= f.association :persona ,:label_method => lambda { |persona| "#{persona.nombres}"} %>
+  <%= f.association :persona ,:label_method => lambda { |persona| "#{persona.nombres}"} %> 
   <%= error_span(@precencium[:persona_id]) %>  
   
   <%= f.input :hora %>
@@ -21,7 +24,12 @@
   <%= f.input :observacion %>
   <%= error_span(@precencium[:observacion]) %>
 
+  <%= f.input :nombre %>
+  <%= error_span(@precencium[:nombre]) %>
+
+
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 precencia_path, :class => 'btn btn-default' %>
+ 
 <% end %>

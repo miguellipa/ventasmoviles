@@ -1,25 +1,59 @@
 
+<div class="body_login">
+    
 
-<center><h1>Acceso al Sistema</h1></center>
-<div class="row">
-  <center><p><%= image_tag("comercial.JPG", width: '400', height: '100', alt: 'Site Logo', class: "logo") %></p></center>
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
-      <p>
-      <%= f.label :usuario %>
-      <%= f.text_field  :usuario, class: 'form-control' %>
-      </p>
-      <p>
-      <%= f.label :Contraseña %>
-      <%= f.password_field :password, class: 'form-control' %>
-      <p>
-        <div style="color: red"><%= flash[:danger] %></div>
-      </p>      
-      </p>
-      <%= f.submit "Acceder", class: "btn btn-primary" %>
+<div class="container">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title"><%= image_tag("logo_trome.png", width: '50', height: '30', alt: 'Site Logo', class: "logo") %>   Acceso al Sistema</div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Olvidaste tu contraseña?</a></div>
+                    </div>     
 
-    <% end %>
+                    <div style="padding-top:30px" class="panel-body" >
 
- 
-  </div>
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                      
+                        <%= form_for(:session, url: login_path,:html=> { class: 'form-horizontal' }) do |f| %>        
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <%= f.text_field  :usuario, class: 'form-control',placeholder: 'Ingrese Usuario' %>
+                                                                               
+                                    </div>
+                                
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <%= f.password_field :password, class: 'form-control',class: 'form-control',placeholder: 'Ingrese Contraseña' %>
+                                    </div>
+                                  
+
+
+                                <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+
+                                    <div class="col-sm-12 controls">
+                                    
+                                      <%= f.submit "Ingresar", class: "btn btn-success" %>
+                                    </div>
+                                </div>
+
+                               <% end %>
+                               
+                                <div class="form-group">
+                                    <div class="col-md-12 control">
+                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                          <div style="color: red"><%= flash[:danger] %></div>
+                                        </div>
+                                    </div>
+                                </div>    
+                            
+
+                          
+
+                        </div>                     
+                    </div>  
+        </div>
+</div>
+
 </div>
