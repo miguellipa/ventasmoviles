@@ -1,27 +1,40 @@
+require_relative 'reporte_factory'
 class Resumen 
     
-    def total_precencia_usuario(user)
-        Precencium.precencia_usuario(user)
-    end    
-
-    def obtener_precencia_cliente(cliente)
-        Cliente.obtener_cliente(cliente)
-    end    
- 
-    def obtener_precencia_producto(cliente)
-        Producto.obtener_producto(cliente)
-    end   
     
-    def obtener_precencia_persona(cliente)
-        Persona.obtener_persona(cliente)
-    end       
- 
-    def obtener_producto_categoria(cliente)
-        Category.obtener_catergoria(cliente)
-    end 
+    def reportefactory
+        ReporteFactory.new
+    end
 
-    def obtener_precencia_pedido(cliente)
-        Pedido.obtener_pedido(cliente)
-    end  
+    def total_precencia_usuario(user)
+        precencia = reportefactory.get_reporte('PRECENCIA')
+        precencia.obtener(user)
+    end    
+    
+    def obtener_producto_categoria(id)
+        categoria = reportefactory.get_reporte('CATEGORIA')
+        categoria.obtener(id)        
+    end
+
+    
+    def obtener_precencia_pedido(id)
+        pedido = reportefactory.get_reporte('PEDIDO')
+        pedido.obtener(id)        
+    end
+    
+    def total_precencia_usuario_count(user)
+        precencia = reportefactory.get_reporte('PRECENCIA')
+        precencia.obtener(user).count
+    end    
  
+    def obtener_descuento_cliente(id)
+        descuentocliente = reportefactory.get_reporte('DESCUENTOCLIENTE')
+        descuentocliente.obtener(id)        
+    end    
+ 
+    def total_pedido(param1,param2)
+        (param1 * param2) 
+    end
+
+    
 end

@@ -6,6 +6,9 @@ class CreateUsuarios < ActiveRecord::Migration
       t.string :password
       t.belongs_to :tipo, index: true
       t.timestamps null: false
+      t.string :provincia
+      t.string :distrito
+      t.string :direccion
     end
   end
 end

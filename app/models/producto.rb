@@ -6,4 +6,8 @@ class Producto < ActiveRecord::Base
         Producto.where("id = ?", producto)
     end 
  
+    def self.obtener(id_producto)
+
+        Producto.where("id = ?", id_producto)
+    end 
 end

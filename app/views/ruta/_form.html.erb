@@ -1,10 +1,21 @@
 <%= simple_form_for @rutum, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :fecha %>
-  <%= error_span(@rutum[:fecha]) %>
-  <%= f.input :cliente_id %>
-  <%= error_span(@rutum[:cliente_id]) %>
-  <%= f.input :usuario_id %>
+
+
+  <%= f.association :usuario ,:label_method => lambda { |usuario| "#{usuario.nombre}" } ,:label => "Ejecutivo de Venta" %>
   <%= error_span(@rutum[:usuario_id]) %>
+  
+  <div class="form-group">
+    <label for="comment">Rutas sugeridas :</label>
+    <textarea class="form-control" rows="5" id="rutasugerida" readonly="true"></textarea>
+  </div>
+  
+  <%= f.association :cliente ,:label_method => lambda { |cliente| "#{cliente.nombre}" } %>
+  <%= error_span(@rutum[:cliente_id]) %>
+
+
+  <%= f.input :fecha,:label => "Fecha Programada de visita" %>
+  <%= error_span(@rutum[:fecha]) %>
+
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

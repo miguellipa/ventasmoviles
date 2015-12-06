@@ -8,16 +8,20 @@ class PedidosController < ApplicationController
   # GET /pedidos.json
   def index
     # INICIO FACADE
-    @pedido_de_usuario = Pedido.new
+    #@pedido_de_usuario = Pedido.new
     
     #FIN FACADE
     
     @pedidos = Pedido.all
     @pedidos_export = Pedido.all
-        respond_to do |format|
-          format.html
-          format.csv { send_data @pedidos_export.to_csv }
-        end
+    
+    respond_to do |format|
+      format.html
+      format.csv { send_data @pedidos_export.to_csv }
+    end
+
+    
+    
   end
 
   # GET /pedidos/1

@@ -116,6 +116,9 @@ ActiveRecord::Schema.define(version: 20151203045233) do
     t.integer  "tipo_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "provincia",  limit: 255
+    t.string   "distrito",   limit: 255
+    t.string   "direccion",  limit: 255
   end
 
   add_index "usuarios", ["tipo_id"], name: "index_usuarios_on_tipo_id", using: :btree

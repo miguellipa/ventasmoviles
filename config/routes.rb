@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  get 'sugerencia/index'
+
+  get 'exportar/index'
+
   get 'resumen/index'
 
   resources :pedidos
   resources :descuento_clientes
+  resources :exportar_reporte
   resources :categories
   resources :personas  
   #get 'login/index'
@@ -20,6 +25,10 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get    '/resumen'   => 'resumen#index'
+  
+get 'sugerencia/sugerencia_ruta', as: 'sugerencia_ruta'
+get 'sugerencia/show'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

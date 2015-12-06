@@ -71,4 +71,9 @@ class ClientesController < ApplicationController
     def cliente_params
       params.require(:cliente).permit(:nombre, :provincia, :distrito, :direccion, :telefono, :ruc)
     end
+    
+    def ruta_sugerida
+       "hola ruta"
+    end    
+    
 end

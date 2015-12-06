@@ -10,8 +10,8 @@
     <tr>
       <th>N°</th>
       <th>Cliente</th>
-      <th>Producto</th>
       <th>Categoria</th>
+      <th>Producto</th>
       <th>Precio</th>
       <th>Cantidad</th>
       <th>Total</th>
@@ -22,36 +22,27 @@
   </thead>    
     
     <tbody>
-    <% i = 1 %>  
    <% @resumen_usuario.total_precencia_usuario(current_user).each do |precencia| %>
       <tr>
-        <td><%= i  %></td>
-        <% @resumen_usuario.obtener_precencia_cliente(precencia.cliente_id).each do |cli| %>
-        <td><%= cli.nombre %></td>
-        <% end %>
+        <td><%= precencia.id %></td>
+        <td><%= precencia.cliente.nombre %></td>
+        <td><%= precencia.producto.producto %></td>
         
-        <% @resumen_usuario.obtener_precencia_producto(precencia.producto_id).each do |pro| %>
-        <td><%= pro.producto %></td>
+        <% @resumen_usuario.obtener_producto_categoria(precencia.producto.category_id).each do |cat| %>
+           <td><%= cat.nombre %></td>
+        <% end %>        
+        <td><%= number_to_currency precencia.producto.precio , unit: "S/.", seperator: ",", delimiter: ""  %></td>
+        <td><%= precencia.cantidad %></td>
+  
         
-               <% @resumen_usuario.obtener_producto_categoria(pro.category_id).each do |cat| %>
-                <td><%= cat.nombre %></td>
-                <% end %>
-        
-                <td><%= number_to_currency pro.precio , unit: "S/.", seperator: ",", delimiter: ""  %></td>
-                <td><%= precencia.cantidad %></td>
-                <td><%= number_to_currency (pro.precio * precencia.cantidad)   , unit: "S/."  %></td>        
-        <% end %>
-        
-        <% @resumen_usuario.obtener_precencia_persona(precencia.persona_id).each do |per| %>
-        <td><%= per.nombres %></td>
-        <% end %>
+        <td><%= number_to_currency @resumen_usuario.total_pedido(precencia.producto.precio,precencia.cantidad)   , unit: "S/."  %></td>   
+        <td><%= precencia.persona.nombres %></td>
         <td><%= precencia.observacion %></td>
-        <td><%= @resumen_usuario.obtener_precencia_pedido(precencia.id) %></td>
+        <td><%= @resumen_usuario.obtener_precencia_pedido(precencia.id) %></td>        
       </tr>
-    <% i = i + 1 %>  
-    <% end %>
+    <% end %>  
     </tbody>
 </table>    
-  <p>Total de Precencias realizadas : <%= @resumen_usuario.total_precencia_usuario(current_user) %> </p>
+  <p>Total de Precencias realizadas : <%= @resumen_usuario.total_precencia_usuario_count(current_user) %> </p>
 </p>
 

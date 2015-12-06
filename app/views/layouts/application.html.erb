@@ -52,6 +52,28 @@
       	listItems.slideToggle('fast');
       	listItems.addClass('collapsed');
       });
+      
+      
+
+        
+        var selects = $('#rutasugerida');
+        
+        
+        $('#rutum_usuario_id').on('change', function() {
+         
+            $('#rutasugerida').empty();    
+            var user_id = $('#rutum_usuario_id').val();
+            $.getJSON('/sugerencia/sugerencia_ruta?id='+user_id, { get_param: 'value' }, function(data) {
+                $.each(data, function(index, element) {
+
+                    selects.append(' Cliente ' + element.nombre + ' sugerencia por :'+ element.sug1 + '\n');
+                });
+            });           
+                          
+        });
+      
+      
+      
       });
       } )( jQuery );
     </script>
@@ -68,16 +90,8 @@
 
 <div id='cssmenu'>
 <ul>
-   <li><%= image_tag("logo_trome.png", width: '80', height: '50', alt: 'Site Logo', class: "logo") %></li>
+   <li class='has-sub' ><%= image_tag("logo_trome.png", width: '80', height: '50', alt: 'Site Logo', class: "logo") %></li>
    <li class='active'><%= link_to "Inicio", root_path  %></li>
-   <% if current_user.tipo_usuario == "Administrador" %>
-   <li class='has-sub'><a href='#'><span>Accesos</span></a>
-      <ul>
-         <li><%= link_to "Usuario", usuarios_path  %></li>
-         <li class='last'><%= link_to "Tipo", tipos_path  %></li>
-      </ul>
-   </li>
-   <% end %>
    
    <li class='has-sub'><a href='#'><span>Proceso Ejecutivo ventas</span></a>
       <ul>
@@ -87,6 +101,7 @@
           <li><%= link_to "Pedidos", pedidos_path  %></li>
           <li><%= link_to "Estadisticas", "#"  %></li>
           <li class='last'><%= link_to "Resumen", resumen_index_path  %></li> 
+          <li><%= link_to "Lista de rutas", ruta_path  %></li>
          
       </ul>
    </li>
@@ -98,6 +113,8 @@
          <li><%= link_to "Ruta", ruta_path  %></li>
          <li><%= link_to "Categorias", categories_path  %></li>
          <li><%= link_to "Descuentos Por Cliente", descuento_clientes_path  %></li>
+         <li><%= link_to "Usuario", usuarios_path  %></li>
+         <li class='last'><%= link_to "Tipo", tipos_path  %></li>         
       </ul>
    </li>   
    <% end %>
@@ -110,6 +127,7 @@
    </li>   
 </ul>
 
+</div>
 
   
   

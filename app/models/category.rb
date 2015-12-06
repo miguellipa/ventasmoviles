@@ -1,8 +1,9 @@
 class Category < ActiveRecord::Base
 
-    def self.obtener_catergoria(categoria)
 
-        Category.where("id = ?", categoria)
-    end         
+    def obtener(id)
+
+        Category.where("id = ?", id)
+    end    
     
 end
